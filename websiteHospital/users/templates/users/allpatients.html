@@ -1,0 +1,31 @@
+{% extends "users/main.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+{% for post in pst %}
+<article class="media content-section">
+  <div class="media-body">
+    <div class="article-metadata">
+
+      <h2>{{ post.name }}</h2>
+      <small class="text-muted">Age: {{ post.age}}</small>
+        {% for i in post.doctors.all %}
+        <p>Doctor: {{i.name}} Category: {{i.category}}</p>
+        {% endfor %}
+    </div>
+    <h2><a class="article-title" href="#">{{ post.dob}}</a></h2>
+    <form action = "{% url 'deletePatient'%}"  method = "POST">
+	{% csrf_token %}
+
+	<input id="your_name" type="hidden" name="your_name" value="{{ post.phone }}">
+	<input type="submit" value="Delete">
+    </form>
+
+    <p class="article-content">Phone: {{ post.phone }}</p>
+    <p>Serial: {{post.serial}}</p>
+    <p>Appointment Date: {{post.appointment}}</p>
+    <p>Date of application: {{post.date}}</p>
+  </div>
+</article>
+{% endfor %}
+
+{% endblock content %}

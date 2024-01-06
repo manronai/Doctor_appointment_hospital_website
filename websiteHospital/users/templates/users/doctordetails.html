@@ -1,0 +1,25 @@
+{% extends "users/main.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+{% for post in pst %}
+<article class="media content-section">
+  <div class="media-body">
+    <div class="article-metadata">
+
+      <h2>{{ post.name }}</h2>
+      <small class="text-muted">{{ post.category}}</small>
+    </div>
+    <h2><a class="article-title" href="#">{{ post.visitingHour }}</a></h2>
+    <form action = "{% url 'patientdetails'%}"  method = "POST">
+	{% csrf_token %}
+
+	<input id="your_name" type="hidden" name="your_name" value="{{ post.name }}">
+	<input type="submit" value="Take Appointment">
+    </form>
+
+    <p class="article-content">{{ post.details }}</p>
+  </div>
+</article>
+{% endfor %}
+
+{% endblock content %}

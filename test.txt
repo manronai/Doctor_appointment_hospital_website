@@ -1,0 +1,10 @@
+
+    'home/', 'home'
+    'category/', 'category'
+  admin : 'update/',  'update'
+  'details/', vitails, 'doctrdetails'
+   'patientdetails'/, 'patietdetails'
+   admin: 'allpatients/', 'allpatients
+  admin:  'deletePatientletePatient, 'deletePtient'
+    'contact/', 'contact'
+    'about/', 'about'
